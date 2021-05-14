@@ -52,6 +52,20 @@ const App = () => {
 export default App;
 ```
 
+## **Get Selected Month and Year**
+To get selected month and year by clicking on next and previous icon, 
+use **eventMonth** property, here is the example below
+```
+const App = () => {
+    let [date, selectedMonth] = useState('');
+    ...
+    return (
+      ...
+      <SingleCalendarEvents  eventMonth={selectedMonth} />
+    )
+
+```
+You will get current month and year in this format **May,2020**
 
 
 ## **Theming:** 
@@ -104,6 +118,7 @@ You can customize your theme color and height through this css variables.
 | **border**  | **Boolean**  | *sets border from css variables* | **true / false**|
 | **presentOnly**  | **Boolean**  | *If true will show selected months days only* | **true / false**|
 | **accessibility**  | **Boolean**  | *If true, it will have user interectivity evetns* | **true / false**|
+| **eventMonth**  | **function**  | *It will return current month and year* | |
 
 --------------------------------------------
 
