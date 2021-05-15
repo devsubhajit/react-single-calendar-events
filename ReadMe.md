@@ -31,18 +31,24 @@ const App = () => {
         presentOnly:true,
         accessibility:true
       }
-      let data = [
-          {
-            day:3,
-            month:'May',
-            year:'2021',
-            events:[
+      let data = {
+            month: 'May',
+            year: '2021',
+            list: [
               {
-                title:"Demo Title for the event",
+                day: 3,
+                events: [
+                  {
+                    title: "Mr. Shir Bhagwan Bihani x 2 (IXB - DEL) I5 535 C5C74N Confirmed",
+                    start: "2:00 am",
+                    end: "4:00am",
+                    priority: "high", // medium, normal
+                  }
+                ]
               }
+
             ]
           }
-      ]
 
     return (
         ....
@@ -51,6 +57,8 @@ const App = () => {
 }
 export default App;
 ```
+In events property, whatever data you are sending, make sure that you are sending **month** & **year** with proper value. **list** can be empty. If list is empty send it as an empty array.
+
 
 ## **Get Selected Month and Year**
 To get selected month and year by clicking on next and previous icon, 
