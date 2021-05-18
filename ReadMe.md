@@ -29,7 +29,10 @@ const App = () => {
         fontSize:16,
         border:true,
         presentOnly:true,
-        accessibility:true
+        accessibility:true,
+        tooltip:true,
+        tooltipPosition:'top',
+        tooltipTitle:true
       }
       let data = {
             month: 'May',
@@ -40,9 +43,10 @@ const App = () => {
                 events: [
                   {
                     title: "Mr. Shir Bhagwan Bihani x 2 (IXB - DEL) I5 535 C5C74N Confirmed",
-                    start: "2:00 am",
-                    end: "4:00am",
-                    priority: "high", // medium, normal
+                    details:{
+                      "Start Date":"25-12-2021",
+                      "End Date":"31-12-2021"
+                    }
                   }
                 ]
               }
@@ -58,6 +62,47 @@ const App = () => {
 export default App;
 ```
 In events property, whatever data you are sending, make sure that you are sending **month** & **year** with proper value. **list** can be empty. If list is empty send it as an empty array.
+
+## **Tooltip**
+
+```
+const App = () => {
+    let options = {
+        ...
+        tooltip:true,
+        tooltipPosition:'top',
+        tooltipTitle:true
+      }
+      let data = {
+            month: 'May',
+            year: '2021',
+            list: [
+              {
+                day: 3,
+                events: [
+                  {
+                    title: "Mr. Shir Bhagwan Bihani x 2 (IXB - DEL) I5 535 C5C74N Confirmed",
+                    details:{
+                      "Start Date":"25-12-2021",
+                      "End Date":"31-12-2021"
+                    }
+                  }
+                ]
+              }
+
+            ]
+          }
+
+    return (
+        ....
+        <SingleCalendarEvents  options={options} events={data}/>
+    )
+}
+export default App;
+```
+Tooltip, from options need to be set, like  **true or false**, then the positions as **top, left, bottom, right** and finally if you wan to show event title in tooltip that is also possible by setting **tooltipTitle** as **true**.
+
+**Event Details:** *details* under Events array details option is for showing data in tooltip.
 
 
 ## **Get Selected Month and Year**
@@ -75,6 +120,24 @@ const App = () => {
 ```
 You will get current month and year in this format **May,2020**
 
+## **Event List Onlice Event**
+To have some functionalities like opening popup or routing details page, this library has provided a click event facility on each list item.
+To achive that use **eventClick** and pass a function, here is the example below.
+```
+const App = () => {
+    let [date, selectedMonth] = useState('');
+    ...
+    const handleEventClick = (data)=>{
+      console.log('data', data);
+      // write your code
+    }
+    return (
+      ...
+      <SingleCalendarEvents  eventClick={handleEventClick}  />
+    )
+
+```
+You will get the all details of that event, what you are sending in **events** property
 
 ## **Theming:** 
 On your css/ scss add this variables.
@@ -114,6 +177,18 @@ You can customize your theme color and height through this css variables.
     --ec-selected-text:#ffffff;
 }
 ```
+## **Theming Tooltip** 
+These are the css variables for theming the tooltip
+```
+    --ec-tooltipWidth: 250px; /*Width of tooltip*/
+    --ec-tooltipHeight:200px; /*Height of tooltip*/
+    --ec-tooltip-bg:#fff; /*Tooltip background color*/
+    --ec-tooltip-fg:#0b386c; /*Tooltip text (foreground) color*/
+    --ec-tooltip-title:18px; /*Tooltip title font size*/
+    --ec-tooltip-list:16px; /*Tooltip list font size*/
+    --ec-tooltip-border-radius: 8px; /*Border radius for tooltip box*/
+```
+
 
 ## **Options**
 | Properties  | Type | Description | Values |
@@ -126,7 +201,11 @@ You can customize your theme color and height through this css variables.
 | **border**  | **Boolean**  | *sets border from css variables* | **true / false**|
 | **presentOnly**  | **Boolean**  | *If true will show selected months days only* | **true / false**|
 | **accessibility**  | **Boolean**  | *If true, it will have user interectivity evetns* | **true / false**|
+| **tooltip**  | **Boolean**  | *If true, it will enable the tooltip* | **true / false**|
+| **tooltipPosition**  | **String**  | *Sets the position of tooltip, ***top*** is default value* | **top / left / bottom / right**|
+| **tooltipTitle**  | **Boolean**  | *If true, it will show the event title on tooltip* | **true/false**|
 | **eventMonth**  | **function**  | *It will return current month and year* | |
+| **eventClick**  | **function**  | *It will return data of clicked event* | |
 
 --------------------------------------------
 
