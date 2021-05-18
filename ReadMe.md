@@ -120,7 +120,7 @@ const App = () => {
 ```
 You will get current month and year in this format **May,2020**
 
-## **Event List Onlice Event**
+## **Event List Onclick Event**
 To have some functionalities like opening popup or routing details page, this library has provided a click event facility on each list item.
 To achive that use **eventClick** and pass a function, here is the example below.
 ```
