@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/devsubhajit/react-single-calendar.git"
+        "url": "git+https://github.com/devsubhajit/react-single-calendar-events.git"
     },
     "keywords": [
         "react-single-calendar-events",
@@ -30,9 +30,9 @@
     ],
     "author": "Subhajit Das <dsacorp@live.in>",
     "bugs": {
-        "url": "https://github.com/devsubhajit/react-single-calendar/issues"
+        "url": "https://github.com/devsubhajit/react-single-calendar-events/issues"
     },
-    "homepage": "https://github.com/devsubhajit/react-single-calendar#readme",
+    "homepage": "https://github.com/devsubhajit/react-single-calendar-events#readme",
     "devDependencies": {
         "babel-core": "^6.21.0",
         "babel-loader": "^7.1.4",
