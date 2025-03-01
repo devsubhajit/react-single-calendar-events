@@ -1,0 +1,327 @@
+/* Main Container */
+
+.dateEcContainer {
+    position: relative;
+    width: var(--ec-mainWidth);
+    height: auto;
+    background-color: var(--ec-light);
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0px 2px 8px #e2e4e6;
+    box-sizing: border-box;
+}
+.insideWrapper {
+    width: 100%;
+    overflow: auto;
+}
+.insideContainer {
+    width: var(--ec-calendarWidth);
+}
+/* 
+    Header
+    default: h1, p, next, prev
+ */
+.dateEcContainer .header {
+    width: inherit;
+    height: 70px;
+    background-color: var(--ec-header);
+    position: relative;
+}
+
+.dateEcContainer .header h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--ec-title);
+    line-height: 3.2rem;
+    margin: 0;
+}
+/* next prev common, hover */
+.dateEcContainer .header .next,
+.dateEcContainer .header .prev {
+    color: var(--ec-title);
+    cursor: pointer;
+    box-shadow: 0px 2px 8px var(--dark);
+    line-height: 2rem;
+    font-size: 2.8rem;
+    position: relative;
+    top: 15px;
+}
+.dateEcContainer .header .next:hover,
+.dateEcContainer .header .prev:hover {
+    background-color: var(--ec-light);
+    color: var(--ec-primary);
+}
+/* .dateEcContainer .header .next {
+    left: auto;
+    right: 0;
+    text-align: center;
+}
+.dateEcContainer .header .prev {
+    left: 0;
+    right: auto;
+    text-align: center;
+} */
+/* this class is for date -range only, when from date has a value, this class got implemented there */
+.dateEcContainer .header .prev.disabled_action {
+    cursor: default;
+    box-shadow: 0px 0px 3px var(--dark);
+    opacity: 0.7;
+}
+.dateEcContainer .header .prev.disabled_action:hover {
+    background-color: var(--ec-primary);
+    color: var(--ec-light);
+}
+/* week names class */
+.dateEcContainer .weekdays {
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    align-items: center;
+    border-bottom: 1px solid #e4e5e6;
+}
+.dateEcContainer .weekdays div {
+    font-size: var(--ec-badgeText);
+    width: calc(100% / 7);
+    display: block;
+    float: left;
+    text-align: center;
+    height: 100%;
+    line-height: 1.5rem;
+    color: var(--ec-primary);
+    background-color: var(--ec-title-bg-light);
+    box-sizing: border-box;
+    border-bottom-width: 0px ;
+}
+.dateEcContainer .weekdays div:nth-child(odd) {
+    background-color: var(--ec-title-bg);
+}
+
+/* calendar days class */
+.dateEcContainer .days {
+    width: 100%;
+    height: calc(100% - 95px);
+    padding: 0;
+    align-items: center;
+}
+
+.bordered {
+    border:1px solid var(--ec-border)
+}
+.dateEcContainer .days div {
+    font-size: 0.8rem;
+    width: calc(100% / 7);
+    display: block;
+    float: left;
+    text-align: center;
+    /* height: calc(100% / 6); */
+    height: var(--ec-height);
+    /* line-height: 2rem; */
+    color: var(--ec-primary);
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    background-color: var(--ec-bg-main);
+}
+.dateEcContainer .days div:hover {
+    border: 1px solid var(--ec-dark);
+}
+.dateEcContainer .days div.alternate:nth-child(odd) {
+    background-color: var(--ec-alternate-bg-light);
+}
+.dateEcContainer .days div.alternate:nth-child(even) {
+    background-color: var(--ec-alternate-bg);
+}
+.dateEcContainer .days div.alternate.today:nth-child(odd) {
+    background-color: var(--ec-today);
+}
+.dateEcContainer .days div.prev_days,
+.dateEcContainer .days div.next_days {
+    color: rgba(123, 124, 125, 0.4);
+}
+.dateEcContainer .days div:hover.prev_days,
+.dateEcContainer .days div:hover.next_days {
+    border: 1px solid var(--ec-dark);
+}
+.dateEcContainer .days div.today {
+    background-color: var(--ec-today);
+    color: var(--ec-light);
+}
+.dateEcContainer .days div.selected_day.hasEvent, 
+.dateEcContainer .days div.selected_day {
+    background-color: var(--ec-selected);
+    color: var(--ec-selected-text);
+}
+
+.dateEcContainer .days div.selected_day.today {
+    background-color: var(--ec-selected);
+    color: var(--ec-selected-text);
+    border: 1px solid var(--ec-today);
+}
+
+.dayvalue {
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin: 6px;
+    text-align: center;
+
+}
+.dayvalue.right {left:auto;}
+.dayvalue.left {right:auto;}
+.dayvalue.top { bottom: auto;}
+.dayvalue.bottom { top: auto;}
+
+.dayvalue.ec-badge-circle {
+    background-color: var(--ec-primary);
+    color: var(--ec-light);
+    border-radius: 100%;
+}
+
+.dayvalue.ec-badge-square {
+    background-color: var(--ec-primary);
+    color: var(--ec-light);
+    border-radius: 2px;
+}
+
+.prev_days .dayvalue.ec-badge-circle, 
+.prev_days .dayvalue.ec-badge-square, 
+.next_days .dayvalue.ec-badge-circle,
+.next_days .dayvalue.ec-badge-square
+{
+    background-color:rgba(123, 124, 125, 0.4);;
+    color: #fff;
+}
+.today .dayvalue.ec-badge-circle, 
+.today .dayvalue.ec-badge-square
+{
+    background-color:#fff;
+    color:var(--ec-today);
+}
+.selected_day .dayvalue.ec-badge-circle, 
+.selected_day .dayvalue.ec-badge-square
+{
+    background-color:#fff;
+    color:var(--ec-primary);
+}
+
+.dateEcContainer .days div.hasEvent {
+    background-color: var(--ec-event);
+}
+.events {
+    list-style: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left:0;
+    padding: 0;
+    
+}
+.events li {
+    text-align: left;
+    display: block;
+    font-weight: 700;
+    color: var(--ec-primary);
+    white-space: normal;
+    border-bottom: 1px dashed #dddddd;
+    padding: 5px 5px 5px 8px;
+    margin: 0 0;
+    cursor: pointer !important;
+}
+.ec-tooltip {
+    position: fixed;
+    width: var(--ec-tooltipWidth);
+    height: var(--ec-tooltipHeight);;
+    top:0;
+    left:0;
+    background-color:var(--ec-tooltip-bg);
+    color:var(--ec-tooltip-fg);
+    transition: all ease 0.4s;
+    padding: 20px 10px 10px;
+    border-radius: var(--ec-tooltip-border-radius);
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+}
+.ec-tooltip > h2 {
+    font-size: var(--ec-tooltip-title);
+    text-align: center;
+}
+.ec-tooltip > p {
+    text-align: left;
+    font-size: var(--ec-tooltip-list);
+    margin:4px 0 0;
+    padding: 0 10px;
+}
+.ec-tooltip > p > span.title {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.ec-tooltip.top::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid var(--ec-tooltip-bg);
+    position: absolute;
+    top: auto;
+    bottom: -12px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.ec-tooltip.bottom::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid var(--ec-tooltip-bg);
+    position: absolute;
+    top: -12px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.ec-tooltip.left::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+    border-left: 12px solid var(--ec-tooltip-bg);
+    position: absolute;
+    top: 12px;
+    bottom: auto;
+    left: auto;
+    right: -12px;
+    margin: auto;
+}
+.ec-tooltip.right::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+    border-right: 12px solid var(--ec-tooltip-bg);
+    position: absolute;
+    top: 12px;
+    bottom: auto;
+    right: auto;
+    left: -12px;
+    margin: auto;
+}
+.events li:hover {
+    color: var(--ec-light);
+    background-color: var(--ec-secondary);
+}
+
+.event-arrows {
+    border:none;
+    background-color: transparent;
+}
+
+.event-arrows:hover {
+    opacity: 0.8;
+}
+
